@@ -1,0 +1,56 @@
+<!DOCTYPE HTML5>
+<html>
+	<head>
+		<title>Ejercicio Fiboaccci Tabla</title>
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="fibonacci.js"></script>
+	</head>
+	<body>
+        <input type="button" value="Mostrar Informacion" id="botonSolver" onclick="imprimirTabla()">
+
+        <table class="egt">
+            <script >
+                async function mostrarTabla(){
+                    var col = [];
+                    for (var i = 0; i < miJsonRespuesta.length; i++) {
+                        for (var key in miJsonRespuesta[i]) {
+                            if (col.indexOf(key) === -1) {
+                                col.push(key);
+                            }
+                        }
+                    }
+                    
+                    
+                    var table = document.createElement("table");
+                    
+                    
+                    var tr = table.insertRow(-1);                   
+                    
+                    for (var i = 0; i < col.length; i++) {
+                        var th = document.createElement("th");    
+                        th.innerHTML = col[i];
+                        tr.appendChild(th);
+                    }
+                    
+                    for (var i = 0; i < miJsonRespuesta.length; i++) {
+                    
+                        tr = table.insertRow(-1);
+                    
+                        for (var j = 0; j < col.length; j++) {
+                            var tabCell = tr.insertCell(-1);
+                            tabCell.innerHTML = miJsonRespuesta[i][col[j]];
+                        }
+                    }
+                    
+                    var divContainer = document.getElementById("showData");
+                    divContainer.innerHTML = "";
+                    divContainer.appendChild(table);
+                    }
+            </script>
+
+        </table>
+  </body>
+</html>
